@@ -15,15 +15,23 @@ class Test(testing.TestCase):
 
     @pytest.mark.usefixtures(demo_no_yield.__name__)
     def test1(self):
-        print('Run TC 1')
+        print('Run test1')
         pass
 
     @pytest.mark.usefixtures(demo_local_fx.__name__)
     def test2(self):
-        print('Run TC 2')
+        print('Run test2')
         pass
 
     @pytest.mark.usefixtures(demo_share_fx.__name__)
     def test3(self):
-        print('Run TC 3')
+        print('Run test3')
+        pass
+
+    @pytest.mark.usefixtures(
+        demo_share_fx.__name__,
+        demo_local_fx.__name__,
+    )
+    def test4(self):
+        print('Run test4 - multiple fixtures')
         pass

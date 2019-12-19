@@ -1,7 +1,7 @@
 import pytest
 from falcon import testing
 
-from conftest import demo_no_yield, demo_share_fx
+from conftest import demo_no_yield, demo_share_fx, demo_external_fx
 
 
 @pytest.fixture
@@ -18,15 +18,18 @@ class Test(testing.TestCase):
         print('Run test1')
         pass
 
+
     @pytest.mark.usefixtures(demo_local_fx.__name__)
     def test2(self):
         print('Run test2')
         pass
 
+
     @pytest.mark.usefixtures(demo_share_fx.__name__)
     def test3(self):
         print('Run test3')
         pass
+
 
     @pytest.mark.usefixtures(
         demo_share_fx.__name__,
@@ -34,4 +37,10 @@ class Test(testing.TestCase):
     )
     def test4(self):
         print('Run test4 - multiple fixtures')
+        pass
+
+
+    @pytest.mark.usefixtures(demo_external_fx.__name__)
+    def test5(self):
+        print('Run test1')
         pass

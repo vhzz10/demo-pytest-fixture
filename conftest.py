@@ -1,4 +1,5 @@
 import pytest
+from tests.__fixtures__.external_fx import demo_external_fx
 
 @pytest.fixture()  # default scope is function
 def demo_share_fx():

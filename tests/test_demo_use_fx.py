@@ -8,7 +8,7 @@ from conftest import demo_no_yield, demo_share_fx
 def demo_local_fx():
     print('Start LOCAL fx')
     yield
-    print('Done LOCAL fx')
+    print('End LOCAL fx')
 
 
 class Test(testing.TestCase):

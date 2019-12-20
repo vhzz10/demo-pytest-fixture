@@ -1,7 +1,7 @@
 import pytest
 from falcon import testing
 
-from conftest import demo_no_yield, demo_share_fx, demo_external_fx
+from conftest import demo_no_yield, demo_share_fx, demo_external_fx, fx_1, fx_2, fx_3
 
 
 @pytest.fixture
@@ -15,17 +15,17 @@ class Test1(testing.TestCase):
 
     @pytest.mark.usefixtures(demo_no_yield.__name__)
     def test1(self):
-        print('Run Test1.test1')
+        print(f'Run {self.test1.__name__}')
 
 
     @pytest.mark.usefixtures(demo_local_fx.__name__)
     def test2(self):
-        print('Run Test1.test2')
+        print(f'Run {self.test2.__name__}')
 
 
     @pytest.mark.usefixtures(demo_share_fx.__name__)
     def test3(self):
-        print('Run Test1.test3')
+        print(f'Run {self.test3.__name__}')
 
 
     @pytest.mark.usefixtures(
@@ -33,19 +33,16 @@ class Test1(testing.TestCase):
         demo_local_fx.__name__,
     )
     def test4(self):
-        print('Run Test1.test4 - multiple fixtures')
+        print(f'Run {self.test4.__name__} - multiple fixtures')
 
 
     @pytest.mark.usefixtures(demo_external_fx.__name__)
     def test5(self):
-        print('Run Test1.test1')
+        print(f'Run {self.test5.__name__}')
 
 
-@pytest.mark.usefixtures(demo_share_fx.__name__)
+@pytest.mark.usefixtures(fx_1.__name__)
 class Test2_usefixtures_at_class_level(testing.TestCase):
 
     def test1(self):
-        print('Run Test2.test1')
-
-    def test2(self):
-        print('Run Test2.test2')
+        print(f'Run {self.test1.__name__}')

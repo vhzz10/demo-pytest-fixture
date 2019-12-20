@@ -11,24 +11,21 @@ def demo_local_fx():
     print('End LOCAL fx')
 
 
-class Test(testing.TestCase):
+class Test1(testing.TestCase):
 
     @pytest.mark.usefixtures(demo_no_yield.__name__)
     def test1(self):
-        print('Run test1')
-        pass
+        print('Run Test1.test1')
 
 
     @pytest.mark.usefixtures(demo_local_fx.__name__)
     def test2(self):
-        print('Run test2')
-        pass
+        print('Run Test1.test2')
 
 
     @pytest.mark.usefixtures(demo_share_fx.__name__)
     def test3(self):
-        print('Run test3')
-        pass
+        print('Run Test1.test3')
 
 
     @pytest.mark.usefixtures(
@@ -36,11 +33,19 @@ class Test(testing.TestCase):
         demo_local_fx.__name__,
     )
     def test4(self):
-        print('Run test4 - multiple fixtures')
-        pass
+        print('Run Test1.test4 - multiple fixtures')
 
 
     @pytest.mark.usefixtures(demo_external_fx.__name__)
     def test5(self):
-        print('Run test1')
-        pass
+        print('Run Test1.test1')
+
+
+@pytest.mark.usefixtures(demo_share_fx.__name__)
+class Test2_usefixtures_at_class_level(testing.TestCase):
+
+    def test1(self):
+        print('Run Test2.test1')
+
+    def test2(self):
+        print('Run Test2.test2')

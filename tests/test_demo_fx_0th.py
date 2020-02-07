@@ -1,7 +1,8 @@
 import pytest
 from falcon import testing
 
-from conftest import demo_no_yield, demo_shared_fx, demo_external_fx
+from tests.__fixtures__.fx_0th import demo_no_yield, demo_shared_fx
+from tests.__fixtures__.external_fx import demo_external_fx
 from tests.this_method import this_method
 
 

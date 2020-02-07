@@ -1,7 +1,7 @@
 import pytest
 from falcon import testing
 
-from conftest import fx_1, fx_2, fx_3
+from tests.__fixtures__.fx_at_class_level import fx_1, fx_2, fx_3
 from tests.this_method import this_method
 
 

@@ -19,6 +19,9 @@ pipenv sync
 # run test 
 ```bash
 pipenv run pytest
+
+# with tests' output
+pipenv run pytest -s
 ```
 
 # about demo tests

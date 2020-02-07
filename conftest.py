@@ -1,11 +1,13 @@
 import pytest
 from tests.__fixtures__.external_fx import demo_external_fx
 
+
 @pytest.fixture()  # default scope is function
-def demo_share_fx():
-    print('Start SHARE fx')
+def demo_shared_fx():
+    print('Start SHARED fx')
     yield
-    print('End SHARE fx')
+    print('End SHARED fx')
+
 
 @pytest.fixture()
 def demo_no_yield():

@@ -1,13 +1,14 @@
 import pytest
 from falcon import testing
 
-from conftest import demo_no_yield, demo_share_fx, demo_external_fx
+from conftest import demo_no_yield, demo_shared_fx, demo_external_fx
 from tests.this_method import this_method
+
 
 @pytest.fixture
 def demo_local_fx():
     print('Start LOCAL fx')
-    yield
+    yield  # unittest method run here - the one marked with @pytest.mark.usefixtures('this_method_name')
     print('End LOCAL fx')
 
 
@@ -23,16 +24,16 @@ class Test1(testing.TestCase):
         print(f'Run {this_method()}')
 
 
-    @pytest.mark.usefixtures(demo_share_fx.__name__)
+    @pytest.mark.usefixtures(demo_shared_fx.__name__)
     def test3(self):
         print(f'Run {this_method()}')
 
 
     @pytest.mark.usefixtures(
-        demo_share_fx.__name__,
+        demo_shared_fx.__name__,
         demo_local_fx.__name__,
     )
-    def test4(self):
+    def test4__use_multi_fx(self):
         print(f'Run {this_method()}')
 
 
